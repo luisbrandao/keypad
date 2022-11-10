@@ -7,7 +7,7 @@
 #define potentiometerPIN 2
 
 int LED_GREEN_1_STATE = LOW;
-int LED_GREEN_1_COUNT = 0;
+int TIMER = 0;
 int LED_GREEN_2_STATE = LOW;
 int LED_RED_STATE = LOW;
 int LED_YELLOW_STATE = LOW;
@@ -73,13 +73,19 @@ void loop() {
     }
   }
 
-  if (LED_GREEN_1_STATE == HIGH) {
-	  LED_GREEN_1_COUNT += 1;
-      if (LED_GREEN_1_COUNT >= pot) {
-        Mouse.click();
-        LED_GREEN_1_COUNT = 0;
+
+  if (LED_GREEN_1_STATE == HIGH || LED_GREEN_2_STATE == HIGH) {
+    TIMER += 1;
+    if (TIMER >= pot) {
+      if (LED_GREEN_1_STATE == HIGH){
+        Mouse.click(MOUSE_LEFT);
       }
+      if (LED_GREEN_2_STATE == HIGH){
+        Mouse.click(MOUSE_RIGHT);
+      }
+      TIMER = 0;
+    }
   }
-  
+ 
   delay(1);
 }
