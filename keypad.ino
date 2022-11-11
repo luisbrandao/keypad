@@ -1,5 +1,6 @@
 #include <Keypad.h>
 #include <Mouse.h>
+#include <Keyboard.h>
 #define LED_GREEN_1 15
 #define LED_GREEN_2 14
 #define LED_RED 16
@@ -45,15 +46,68 @@ void setup() {
   
   // Incia as libs de IO com o PC
   Mouse.begin();
+  Keyboard.begin();
 }
 
 void loop() {
-  //Acende o led
   char customKey = customKeypad.getKey();
   int pot = analogRead(potentiometerPIN);
   
   if (customKey){
     switch (customKey) {
+      // == L1 ======================================
+      case 'P':
+        Keyboard.write(0xF0); // f13
+        break;
+      case 'Q':
+        Keyboard.write(0xF1); // f14
+        break;
+      case 'R':
+        Keyboard.write(0xF2); // f15
+        break;
+
+      // == L2 ======================================
+      case 'M':
+        Keyboard.write(0xF3); // f16
+        break;
+      case 'N':
+        Keyboard.write(0xF4); // f17
+        break;
+      case 'O':
+        Keyboard.write(0xF5); // f18
+        break;
+
+      // == L3 ======================================
+      case 'I':
+        Keyboard.write(0x1008FF1D); // f16
+        break;
+      case 'J':
+        Keyboard.write(0x9E0);
+        break;
+      case 'K':
+        Keyboard.write(0xEB);
+        break;        
+      case 'L':
+        Keyboard.write(0xEC);
+        break;
+
+      // == L4 ======================================
+      case 'E':
+        Keyboard.write(0xED);
+        break;
+      case 'F':
+        Keyboard.write(0xEF);
+        break;
+      case 'G':
+        Keyboard.write(0xEF);  // =
+        break;
+      case 'H':
+        Keyboard.write(0xD0);  //Pause
+        break;
+
+
+
+      // == L5 ======================================
       case 'A':
         LED_GREEN_1_STATE = !LED_GREEN_1_STATE;
         digitalWrite(LED_GREEN_1, LED_GREEN_1_STATE);
