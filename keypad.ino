@@ -1,6 +1,5 @@
 #include <Keypad.h>
-#include <Mouse.h>
-#include "Keyboard.h"
+#include <HID-Project.h>
 
 #define LED_GREEN_1 15
 #define LED_GREEN_2 14
@@ -52,13 +51,13 @@ void setup() {
 void loop() {
   char customKey = customKeypad.getKey();
   int pot = analogRead(potentiometerPIN);
-  for (int i = 0xAAAA; i <=0xFFFF; i++) {
+  for (uint8_t i = 0xAAAA; i <=0xFFFF; i++) {
     int pot = analogRead(potentiometerPIN);
     Serial.print(pot);
     Serial.print("   |Testando key = ");
     Serial.println(i);
 
-    Keyboard.writeRaw(i);
+    Keyboard.write(i);
     delay(pot);
   }
 
