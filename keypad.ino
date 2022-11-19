@@ -45,7 +45,7 @@ void setup() {
 
   // Incia as libs de IO com o PC
   Mouse.begin();
-  Consumer.begin();
+  Keyboard.begin();
 }
 
 void loop() {
@@ -56,52 +56,52 @@ void loop() {
     switch (customKey) {
       // == L1 ======================================
       case 'P':
-        Consumer.write(0xF0);
+        Keyboard.write(KEY_F13);
         break;
       case 'Q':
-        Consumer.write(0xF1);
+        Keyboard.write(KEY_F14);
         break;
       case 'R':
-        Consumer.write(0xF2);
+        Keyboard.write(KEY_F15);
         break;
 
       // == L2 ======================================
       case 'M':
-        Consumer.write(0xF3);
+        Keyboard.write(KEY_F16);
         break;
       case 'N':
-        Consumer.write(0xF4);
+        Keyboard.write(KEY_F17);
         break;
       case 'O':
-        Consumer.write(0xF5);
+        Keyboard.write(KEY_F18);
         break;
 
       // == L3 ======================================
       case 'I':
-        Consumer.write(0x198);
+        Keyboard.write(KEY_INTERNATIONAL2);
         break;
       case 'J':
-        Consumer.write(0x199);
+        Keyboard.write(KEY_MENU2);
         break;
       case 'K':
-        Consumer.write(0x19A);
+        Keyboard.write(KEY_EXECUTE);
         break;
       case 'L':
-        Consumer.write(0x19B);
+        Keyboard.write(KEY_HELP);
         break;
 
       // == L4 ======================================
       case 'E':
-        Consumer.write(0x19C);
+        Keyboard.write(KEY_INTERNATIONAL4);
         break;
       case 'F':
-        Consumer.write(0x19D);
+        Keyboard.write(KEY_INTERNATIONAL5);
         break;
       case 'G':
-        Consumer.write(0x19E);
+        Keyboard.write(KEY_LANG3);
         break;
       case 'H':
-        Consumer.write(0x19F);
+        Keyboard.write(KEY_LANG4);
         break;
 
       // == L5 ======================================
@@ -116,10 +116,18 @@ void loop() {
       case 'C':
         LED_YELLOW_STATE = !LED_YELLOW_STATE;
         digitalWrite(LED_YELLOW, LED_YELLOW_STATE);
+          if (LED_YELLOW_STATE == HIGH)
+            Mouse.press(MOUSE_LEFT);
+          else
+            Mouse.release(MOUSE_LEFT);
       break;
       case 'D':
         LED_RED_STATE = !LED_RED_STATE;
         digitalWrite(LED_RED, LED_RED_STATE);
+        if (LED_RED_STATE == HIGH)
+          Mouse.press(MOUSE_RIGHT);
+        else
+          Mouse.release(MOUSE_RIGHT);
       break;
     }
   }
