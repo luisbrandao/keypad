@@ -44,7 +44,7 @@ void setup() {
   digitalWrite(LED_YELLOW, LED_YELLOW_STATE);
 
   // Incia as libs de IO com o PC
-  AbsoluteMouse.begin();
+  Mouse.begin();
 }
 
 void loop() {
@@ -113,10 +113,10 @@ void loop() {
     TIMER += 1;
     if (TIMER >= pot) {
       if (LED_GREEN_1_STATE == HIGH){
-        AbsoluteMouse.click(MOUSE_LEFT);
+        Mouse.click(MOUSE_LEFT);
       }
       if (LED_GREEN_2_STATE == HIGH){
-        AbsoluteMouse.click(MOUSE_RIGHT);
+        Mouse.click(MOUSE_RIGHT);
       }
       TIMER = 0;
     }
