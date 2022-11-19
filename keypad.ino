@@ -56,24 +56,24 @@ void loop() {
     switch (customKey) {
       // == L1 ======================================
       case 'P':
-        Consumer.write(0x192);
+        Consumer.write(0xF0);
         break;
       case 'Q':
-        Consumer.write(0x193);
+        Consumer.write(0xF1);
         break;
       case 'R':
-        Consumer.write(0x194);
+        Consumer.write(0xF2);
         break;
 
       // == L2 ======================================
       case 'M':
-        Consumer.write(0x195);
+        Consumer.write(0xF3);
         break;
       case 'N':
-        Consumer.write(0x196);
+        Consumer.write(0xF4);
         break;
       case 'O':
-        Consumer.write(0x197);
+        Consumer.write(0xF5);
         break;
 
       // == L3 ======================================
