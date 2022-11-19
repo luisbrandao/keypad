@@ -1,0 +1,46 @@
+0xF0 = XF86Tools
+0xF1 = XF86Launch5
+0xF2 = XF86Launch6
+0xF3 = XF86Launch7
+0xF4 = XF86Launch8
+0xF5 = XF86Launch9
+
+  char customKey = customKeypad.getKey();
+  int pot = analogRead(potentiometerPIN);
+  for (int i = 0xFD; i <=0xFFFF; i++) {
+    int pot = analogRead(potentiometerPIN);
+    Serial.print(pot);
+    Serial.print("   |Testando key = ");
+    Serial.println(i);
+
+    Keyboard.write(i);
+    delay(pot);
+  }
+
+
+
+https://forum.arduino.cc/t/arduino-leonardo-as-usb-keyboard-multimedia-keys/681731/4
+
+
+0x192 = XF86Calculator
+KeyRelease event, serial 209, synthetic NO, window 0x3c00001,
+   root 0x1da, subw 0x0, time 4737370, (47,100), root:(2100,256),
+   state 0x0, keycode 148 (keysym 0x1008ff1d, XF86Calculator), same_screen YES,
+   XLookupString gives 0 bytes:
+   XFilterEvent returns: False
+
+
+KeyPress event, serial 209, synthetic NO, window 0x3c00001,
+    root 0x1da, subw 0x0, time 4750994, (47,100), root:(2100,256),
+    state 0x0, keycode 224 (keysym 0x1008ff8e, XF86Messenger), same_screen YES,
+    XLookupString gives 0 bytes:
+    XmbLookupString gives 0 bytes:
+    XFilterEvent returns: False
+
+
+KeyPress event, serial 209, synthetic NO, window 0x3c00001,
+    root 0x1da, subw 0x0, time 4750994, (47,100), root:(2100,256),
+    state 0x0, keycode 224 (keysym 0x1008ff8e, XF86Messenger), same_screen YES,
+    XLookupString gives 0 bytes:
+    XmbLookupString gives 0 bytes:
+    XFilterEvent returns: False
