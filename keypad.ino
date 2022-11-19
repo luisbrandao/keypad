@@ -29,7 +29,7 @@ byte colPins[COLS] = {6, 7, 8, 9, 10};
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 
 void setup() {
-  Serial.begin(9600);
+//  Serial.begin(9600);
 
   // Seta os leds
   pinMode(LED_RED, OUTPUT);
@@ -45,6 +45,7 @@ void setup() {
 
   // Incia as libs de IO com o PC
   Mouse.begin();
+  Consumer.begin();
 }
 
 void loop() {
@@ -55,38 +56,52 @@ void loop() {
     switch (customKey) {
       // == L1 ======================================
       case 'P':
+        Consumer.write(0x192);
         break;
       case 'Q':
+        Consumer.write(0x193);
         break;
       case 'R':
+        Consumer.write(0x194);
         break;
 
       // == L2 ======================================
       case 'M':
+        Consumer.write(0x195);
         break;
       case 'N':
+        Consumer.write(0x196);
         break;
       case 'O':
+        Consumer.write(0x197);
         break;
 
       // == L3 ======================================
       case 'I':
+        Consumer.write(0x198);
         break;
       case 'J':
+        Consumer.write(0x199);
         break;
       case 'K':
+        Consumer.write(0x19A);
         break;
       case 'L':
+        Consumer.write(0x19B);
         break;
 
       // == L4 ======================================
       case 'E':
+        Consumer.write(0x19C);
         break;
       case 'F':
+        Consumer.write(0x19D);
         break;
       case 'G':
+        Consumer.write(0x19E);
         break;
       case 'H':
+        Consumer.write(0x19F);
         break;
 
       // == L5 ======================================
