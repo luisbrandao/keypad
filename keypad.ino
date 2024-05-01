@@ -1,9 +1,9 @@
 #include <Keypad.h>
 #include <HID-Project.h>
-#define LED_GREEN_1 15
-#define LED_GREEN_2 14
-#define LED_RED 16
-#define LED_YELLOW 18
+#define LED_GREEN_1 18
+#define LED_GREEN_2 15
+#define LED_RED 14
+#define LED_YELLOW 16
 #define potentiometerPIN 2
 
 int LED_GREEN_1_STATE = LOW;
@@ -12,24 +12,23 @@ int LED_GREEN_2_STATE = LOW;
 int LED_RED_STATE = LOW;
 int LED_YELLOW_STATE = LOW;
 
+const byte COLS = 4;
+const byte ROWS = 5;
 
-const byte ROWS = 4;
-const byte COLS = 5;
+byte colPins[COLS] = { 5, 4, 3, 2 };
+byte rowPins[ROWS] = { 6, 7, 8, 9, 10 };
 
-char hexaKeys[ROWS][COLS] = {
-  {'A', 'E', 'I', 'M','P'},
-  {'B', 'F', 'J', 'N','Q'},
-  {'C', 'G', 'K', 'O','R'},
-  {'D', 'H', 'L', 'X','X'}
+char hexaKeys[COLS][ROWS] = {
+  { 'X', 'X', 'J', 'N', 'R' },
+  { 'C', 'F', 'I', 'M', 'Q' },
+  { 'B', 'E', 'H', 'L', 'P' },
+  { 'A', 'D', 'G', 'K', 'O' }
 };
 
-byte rowPins[ROWS] = {5, 4, 3, 2};
-byte colPins[COLS] = {6, 7, 8, 9, 10};
-
-Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
+Keypad customKeypad = Keypad(makeKeymap(hexaKeys), colPins, rowPins, COLS, ROWS);
 
 void setup() {
-//  Serial.begin(9600);
+  //  Serial.begin(9600);
 
   // Seta os leds
   pinMode(LED_RED, OUTPUT);
@@ -52,93 +51,111 @@ void loop() {
   char customKey = customKeypad.getKey();
   int pot = analogRead(potentiometerPIN);
 
-  if (customKey){
+  if (customKey) {
     switch (customKey) {
       // == L1 ======================================
-      case 'P':
+      case 'A':
+        // Keyboard.write('A');
         Keyboard.write(KEY_F13);
         break;
-      case 'Q':
+      case 'B':
+        // Keyboard.write('B');
         Keyboard.write(KEY_F14);
         break;
-      case 'R':
+      case 'C':
+        // Keyboard.write('C');
         Keyboard.write(KEY_F15);
         break;
 
       // == L2 ======================================
-      case 'M':
+      case 'D':
+        // Keyboard.write('D');
         Keyboard.write(KEY_F16);
         break;
-      case 'N':
+      case 'E':
+        // Keyboard.write('E');
         Keyboard.write(KEY_F17);
         break;
-      case 'O':
+      case 'F':
+        // Keyboard.write('F');
         Keyboard.write(KEY_F18);
         break;
 
       // == L3 ======================================
-      case 'I':
+      case 'G':
+        // Keyboard.write('G');
         Keyboard.write(KEY_INTERNATIONAL2);
         break;
-      case 'J':
+      case 'H':
+        // Keyboard.write('H');
         Keyboard.write(KEY_MENU2);
         break;
-      case 'K':
+      case 'I':
+        // Keyboard.write('I');
         Keyboard.write(KEY_EXECUTE);
         break;
-      case 'L':
+      case 'J':
+        // Keyboard.write('J');
         Keyboard.write(KEY_HELP);
         break;
 
       // == L4 ======================================
-      case 'E':
+      case 'K':
+        // Keyboard.write('K');
         Keyboard.write(KEY_INTERNATIONAL4);
         break;
-      case 'F':
+      case 'L':
+        // Keyboard.write('L');
         Keyboard.write(KEY_INTERNATIONAL5);
         break;
-      case 'G':
+      case 'M':
+        // Keyboard.write('M');
         Keyboard.write(KEY_LANG3);
         break;
-      case 'H':
+      case 'N':
+        // Keyboard.write('N');
         Keyboard.write(KEY_LANG4);
         break;
 
       // == L5 ======================================
-      case 'A':
+      case 'O':
+        // Keyboard.write('O');
         LED_GREEN_1_STATE = !LED_GREEN_1_STATE;
         digitalWrite(LED_GREEN_1, LED_GREEN_1_STATE);
-      break;
-      case 'B':
+        break;
+      case 'P':
+        // Keyboard.write('P');
         LED_GREEN_2_STATE = !LED_GREEN_2_STATE;
         digitalWrite(LED_GREEN_2, LED_GREEN_2_STATE);
-      break;
-      case 'C':
+        break;
+      case 'Q':
+        // Keyboard.write('Q');
         LED_YELLOW_STATE = !LED_YELLOW_STATE;
         digitalWrite(LED_YELLOW, LED_YELLOW_STATE);
           if (LED_YELLOW_STATE == HIGH)
             Mouse.press(MOUSE_LEFT);
           else
             Mouse.release(MOUSE_LEFT);
-      break;
-      case 'D':
+        break;
+      case 'R':
+        // Keyboard.write('R');
         LED_RED_STATE = !LED_RED_STATE;
         digitalWrite(LED_RED, LED_RED_STATE);
         if (LED_RED_STATE == HIGH)
           Mouse.press(MOUSE_RIGHT);
         else
           Mouse.release(MOUSE_RIGHT);
-      break;
+        break;
     }
   }
 
   if (LED_GREEN_1_STATE == HIGH || LED_GREEN_2_STATE == HIGH) {
     TIMER += 1;
     if (TIMER >= pot) {
-      if (LED_GREEN_1_STATE == HIGH){
+      if (LED_GREEN_1_STATE == HIGH) {15
         Mouse.click(MOUSE_LEFT);
       }
-      if (LED_GREEN_2_STATE == HIGH){
+      if (LED_GREEN_2_STATE == HIGH) {
         Mouse.click(MOUSE_RIGHT);
       }
       TIMER = 0;
