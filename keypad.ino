@@ -152,7 +152,7 @@ void loop() {
   if (LED_GREEN_1_STATE == HIGH || LED_GREEN_2_STATE == HIGH) {
     TIMER += 1;
     if (TIMER >= pot) {
-      if (LED_GREEN_1_STATE == HIGH) {15
+      if (LED_GREEN_1_STATE == HIGH) {
         Mouse.click(MOUSE_LEFT);
       }
       if (LED_GREEN_2_STATE == HIGH) {
