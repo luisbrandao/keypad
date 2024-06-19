@@ -1,9 +1,9 @@
 #include <Keypad.h>
 #include <HID-Project.h>
-#define LED_GREEN_1 18
-#define LED_GREEN_2 15
-#define LED_RED 14
-#define LED_YELLOW 16
+#define LED_GREEN_1 15
+#define LED_GREEN_2 18
+#define LED_RED 16
+#define LED_YELLOW 14
 #define potentiometerPIN 2
 
 int LED_GREEN_1_STATE = LOW;
@@ -15,8 +15,8 @@ int LED_YELLOW_STATE = LOW;
 const byte COLS = 4;
 const byte ROWS = 5;
 
-byte colPins[COLS] = { 5, 4, 3, 2 };
-byte rowPins[ROWS] = { 6, 7, 8, 9, 10 };
+byte colPins[COLS] = { 2,3,4,5};
+byte rowPins[ROWS] = { 10,9,8,7,6 };
 
 char hexaKeys[COLS][ROWS] = {
   { 'X', 'X', 'J', 'N', 'R' },
